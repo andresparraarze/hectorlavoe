@@ -108,10 +108,10 @@ function viewEmployeeByDepartment() {
     console.log("Viewing employees by department\n");
   
     var query =
-      `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
+    `SELECT d.id, d.name, r.salary AS budget
     FROM employee e
     LEFT JOIN role r
-      ON e.role_id = r.id
+    ON e.role_id = r.id
     LEFT JOIN department d
     ON d.id = r.department_id
     GROUP BY d.id, d.name`
@@ -179,7 +179,7 @@ function addEmployee() {
       }));
   
       console.table(res);
-      console.log("RoleToInsert!");
+      console.log("ToInsert!");
   
       promptInsert(roleChoices);
     });
@@ -422,14 +422,15 @@ function addRole() {
           salary: answer.salary,
           department_id: answer.departmentId
         },
-          function (err, res) {
-            if (err) throw err;
+
+        function (err, res) {
+        if (err) throw err;
   
             console.table(res);
             console.log("Role Inserted!");
   
             work();
-          });
+        });
   
-      });
+    });
   }

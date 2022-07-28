@@ -1,6 +1,5 @@
 DROP DATABASE IF EXISTS em_db;
 CREATE DATABASE em_db;
-
 USE em_db;
 
 CREATE TABLE department (
